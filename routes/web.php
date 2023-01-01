@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ContactFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tests',[TestController::class,'index']);
+Route::get('/tests/test',[TestController::class,'index']);
+
+// Route::resource('contacts',ContactFormController::class);
+
+//ルート名　リンクを張るときに使う
+
+Route::prefix('contacts')//contactsフォルダの固定
+->middleware(['auth'])//ミドルウェアで認証する
+->controller(ContactFormController::class)//同じコントローラーを使う
+->name('contacts.')//ルート名の頭が共通になる
+->group(function(){//グループ化
+    Route::get('/','index')->name('index');
+    Route::get('/create','create')->name('create');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

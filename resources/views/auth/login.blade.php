@@ -1,4 +1,5 @@
 <x-guest-layout>
+    {{-- 頭のXはコンポーネントを使っていることを示す --}}
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

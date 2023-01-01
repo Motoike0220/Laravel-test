@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Laravelテスト</h1>
+    <p>データ消えた</p>
     @foreach($values as $value)
     <p>{{$value->id}}</p>
     <p>{{$value->text}}</p>
