@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB; //DBファサード
 class TestController extends Controller
 {
     public function index(){
-        return view('tests.test');
+        $values = Test::all();
+        return view('tests.test',compact('values'));
     }
 
     //エロくアント
@@ -28,7 +29,7 @@ class TestController extends Controller
     ->select('id', 'text')
     ->get();
 
-    dd($values, $cnt ,$first, $where, $query);
+    //dd($values, $cnt ,$first, $where, $query);
 
     return view('tests.test',compact('values'));
     }
