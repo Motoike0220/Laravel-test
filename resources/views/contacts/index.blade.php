@@ -11,6 +11,28 @@
                 <div class="p-6 text-gray-900">
                     index<br>
                     <a href='{{ route('contacts.create') }}' class="text-blue-400" >新規登録</a>
+                            <table class="table-auto w-full text-left whitespace-no-wrap">
+                            <thead>
+                                <tr>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">ID</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">名前</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">件名</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">投稿日</th>
+                                <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($contacts as $contact)
+                                <tr>
+                                <td class="border-t-2 border-gray-200 px-4 py-3">{{$contact->id}}</td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3">{{$contact->name}}</td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3">{{$contact->title}}</td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3 text-gray-900">{{$contact->created_at}}</td>
+                                @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
