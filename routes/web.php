@@ -33,6 +33,7 @@ Route::prefix('contacts')//contactsフォルダの固定
 ->group(function(){//グループ化
     Route::get('/','index')->name('index');
     Route::get('/create','create')->name('create');
+    Route::post('/','store')->name('store');
 });
 
 Route::get('/dashboard', function () {
