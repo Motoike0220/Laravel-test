@@ -94,7 +94,19 @@ class ContactFormController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = ContactForm::find($id);
+        $contact->name = $request->name;
+        $contact->title = $request->title;
+        $contact->email = $request->email;
+        $contact->url = $request->url;
+        $contact->gender = $request->gender;
+        $contact->age = $request->age;
+        $contact->contact = $request->contact;
+        $contact->save();//　保存
+
+        //$contact->カラム名でDBからデータを取り出して、$request->カラム名で入力値に更新する
+
+        return to_route('contacts.index');
     }
 
     /**
@@ -105,6 +117,9 @@ class ContactFormController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = ContactForm::find($id);
+        $contact->delete();
+        
+        return to_route('contacts.index');
     }
 }

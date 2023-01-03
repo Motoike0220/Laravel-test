@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section class="text-gray-600 body-font relative">
-                    <form action='{{ route('contacts.store') }}' method='post'>
+                    <form action='{{ route('contacts.update',['id' => $contact->id]) }}' method='post'>
                         @csrf
                     <div class="container px-5 mx-auto">
                         <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -51,7 +51,7 @@
                                         <input type="radio" name="gender" value='1' @if($contact->gender === 1) checked @endif>女性
                                     </div>
                                 </div>
-                                
+
                                 <div class="p-2 w-full">
                                     <div class="relative">
                                         <label for="url" class="leading-7 text-sm text-gray-600">年齢</label>

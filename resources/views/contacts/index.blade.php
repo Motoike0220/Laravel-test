@@ -28,7 +28,7 @@
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{$contact->name}}</td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{$contact->title}}</td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3 text-gray-900">{{$contact->created_at}}</td>
-                                <td class="border-t-2 border-gray-200 px-4 py-3 text-gray-900"><a href='{{route('contacts.show',['id' => $contact->id])}}'>詳細確認</a></td>{{--第二引数を配列で渡す --}}
+                                <td class="border-t-2 border-gray-200 px-4 py-3 text-blue-400"><a href='{{route('contacts.show',['id' => $contact->id])}}'>詳細確認</a></td>{{--第二引数を配列で渡す --}}
                                 @endforeach
                             </tbody>
                             </table>
