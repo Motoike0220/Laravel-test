@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use App\Services\CheckFormService;
 
 class ContactFormController extends Controller
 {
@@ -59,8 +60,8 @@ class ContactFormController extends Controller
     public function show($id)
     {
         $contact = ContactForm::find($id);//idで指定した１件のみ取得
-        if($contact->gender === 0)
-        {$gender = '男性';} else {$gender = '女性';}
+
+        $gender = checkFormService::checkGender($contact);
 
         if($contact->age === 1){$age = '~19歳';}
         if($contact->age === 2){$age = '20歳~29歳';}
@@ -119,7 +120,7 @@ class ContactFormController extends Controller
     {
         $contact = ContactForm::find($id);
         $contact->delete();
-        
+
         return to_route('contacts.index');
     }
 }
