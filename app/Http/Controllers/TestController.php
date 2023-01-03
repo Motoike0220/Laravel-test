@@ -13,7 +13,7 @@ class TestController extends Controller
         return view('tests.test',compact('values'));
     }
 
-    //エロくアント
+    //エロクアント
     public function index2(){
     $values = Test::all();
 
