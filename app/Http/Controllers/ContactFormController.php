@@ -14,14 +14,20 @@ class ContactFormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // $contacts = ContactForm::select('id', 'name', 'title', 'created_at')
         // ->get();
 
-        $contacts = ContactForm::select('id', 'name', 'title', 'created_at')
-        ->paginate(20);
 
+        //ページネーション対応
+        // $contacts = ContactForm::select('id', 'name', 'title', 'created_at')
+        // ->paginate(20);
+
+        $search = $request->search;//変数$searchにフォームから入力された値を格納
+        $query = ContactForm::search($search); //クエリのローカルスコープ　Model内にローカルスコープを定義している 検索結果が格納される
+        $contacts = $query->select('id', 'name', 'title', 'created_at')//検索結果を1ページ２０件でページネーション表示
+        ->paginate(20);
         return view('contacts.index',compact('contacts'));
     }
 
